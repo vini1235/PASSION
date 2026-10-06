@@ -5,21 +5,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Passion</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
   </head>
   <body>
-    <main class="jogo">
+    <main class="jogo" id="menu">
       <header class="introducao">
         <p class="subtitulo">Uma história interativa</p>
         <h1 id="titulo-jogo">Passion</h1>
       </header>
 
-      <p class="descricao">Teste</p>
-
-      <button class="botao-iniciar" type="button">Iniciar novo jogo</button>
-
-      <footer class="footer">
-        <p>Teste</p>
-      </footer>
+      <button class="botao-iniciar" id="novo-jogo" type="button">
+        Novo jogo
+      </button>
+      <button class="botao-iniciar" id="continuar" type="button" hidden>
+        Continuar
+      </button>
+      <button class="botao-iniciar" id="estatisticas-menu" type="button">
+        Estatísticas
+      </button>
     </main>
+
+    <main class="jogo" id="cena" hidden>
+      <button class="botao-iniciar" id="sair" type="button">Sair</button>
+      <div id="conversa" hidden></div>
+
+      <section id="dialogo">
+        <button class="botao-iniciar" id="comecar" type="button">
+          Começar diálogos
+        </button>
+        <button class="botao-iniciar" id="avancar" type="button" hidden>
+          Avançar
+        </button>
+        <div id="escolhas" hidden></div>
+        <button
+          class="botao-iniciar"
+          id="estatisticas-fim"
+          type="button"
+          hidden
+        >
+          Ver estatísticas
+        </button>
+      </section>
+    </main>
+
+    <main class="jogo" id="estatisticas" hidden>
+      <h2>Estatísticas</h2>
+      <p id="quantidade"></p>
+      <ol id="respostas"></ol>
+      <button class="botao-iniciar" id="voltar" type="button">
+        Voltar ao menu
+      </button>
+    </main>
+
+    <dialog id="modal">
+      <p id="mensagem-modal"></p>
+      <form method="dialog">
+        <button class="botao-iniciar" id="cancelar-modal" value="cancelar">
+          Cancelar
+        </button>
+        <button class="botao-iniciar" id="confirmar-modal" value="confirmar">
+          OK
+        </button>
+      </form>
+    </dialog>
   </body>
 </html>

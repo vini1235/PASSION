@@ -1,27 +1,82 @@
 const dialogos = [
   {
-    titulo: "Diálogo 1",
+    titulo: "Bom dia, bruxinha / O chapéu",
     falas: [
-      { personagem: "Personagem", texto: "Teste", lado: "esquerda" },
-      { personagem: "Outro personagem", texto: "Teste", lado: "direita" }
+      { personagem: "", texto: "É de manhã, no quarto da protagonista. Roupas estão espalhadas e objetos mágicos se misturam às coisas do dia a dia.", lado: "centro" },
+      { personagem: "", texto: "Um chapéu de bruxa está sobre a cama. O celular carrega enquanto o despertador toca.", lado: "centro" },
+      { personagem: "Protagonista", texto: "Ah, não...", lado: "esquerda" },
+      { personagem: "Protagonista", texto: "Já tá na hora?", lado: "esquerda" },
+      { personagem: "", texto: "Ela pega o celular. São 8h12.", lado: "centro" },
+      { personagem: "Protagonista", texto: "Se eu me atrasar mais uma vez, meu chefe vai me transformar num sapo.", lado: "esquerda" },
+      { personagem: "Protagonista", texto: "De novo.", lado: "esquerda" },
+      { personagem: "", texto: "Uma notificação do Passion aparece no celular:", lado: "centro" },
+      { personagem: "", texto: "“Seu acompanhamento está pronto para começar! Viva seu dia normalmente. ✨”", lado: "centro" },
+      { personagem: "Protagonista", texto: "Ah, é. O aplicativo que eu instalei ontem...", lado: "esquerda" },
+      { personagem: "Protagonista", texto: "Depois eu vejo isso.", lado: "esquerda" },
+      { personagem: "", texto: "A voz da mãe vem de fora do quarto.", lado: "centro" },
+      { personagem: "Mãe", texto: "FILHAAAA!", lado: "direita" },
+      { personagem: "Protagonista", texto: "QUE FOI, MÃE?", lado: "esquerda" },
+      { personagem: "Mãe", texto: "PASSA NO MERCADO ANTES DO TRABALHO!", lado: "direita" },
+      { personagem: "Protagonista", texto: "Pra quêêê?", lado: "esquerda" },
+      { personagem: "Mãe", texto: "ACABOU O SAL DE LUA DO CALDEIRÃO!", lado: "direita" },
+      { personagem: "Protagonista", texto: "De novo?!", lado: "esquerda" },
+      { personagem: "Mãe", texto: "E NÃO ESQUECE! JÁ DEIXEI PAGO, É SÓ BUSCAR!", lado: "direita" },
+      { personagem: "Protagonista", texto: "Tááá bom, mãe!", lado: "esquerda" },
+      { personagem: "", texto: "Ela suspira.", lado: "centro" },
+      { personagem: "Protagonista", texto: "Mercado, trabalho, mercado...", lado: "esquerda" },
+      { personagem: "Protagonista", texto: "Bom, primeiro eu preciso me vestir.", lado: "esquerda" },
+      { personagem: "", texto: "Pouco depois, ela está diante do espelho, já com a roupa de trabalho e o chapéu de bruxa.", lado: "centro" },
+      { personagem: "", texto: "Um pequeno broche de estrela brilha no chapéu.", lado: "centro" },
+      { personagem: "Protagonista", texto: "Tá. Até que eu tô arrumadinha.", lado: "esquerda" },
+      { personagem: "Protagonista", texto: "Esse broche ficou muito fofo.", lado: "esquerda" },
+      { personagem: "", texto: "Ela pega o celular e manda uma foto no espelho para a amiga Bia.", lado: "centro" },
+      { personagem: "Protagonista", texto: "fit de hoje ✨", lado: "esquerda" },
+      { personagem: "Bia", texto: "nossa amiga", lado: "direita" },
+      { personagem: "Bia", texto: "vai com esse chapéu pro trabalho mesmo???", lado: "direita" },
+      { personagem: "Bia", texto: "olha o tamanho dessa estrela 😭", lado: "direita" },
+      { personagem: "Protagonista (pensamento)", texto: "Ué...", lado: "esquerda" },
+      { personagem: "Protagonista (pensamento)", texto: "Eu tinha gostado.", lado: "esquerda" },
+      { personagem: "", texto: "Ela olha novamente para o espelho, observando a estrela no chapéu.", lado: "centro" }
     ],
-    opcoes: ["Opção 1", "Opção 2", "Opção 3"]
+    opcoes: ["Manter o chapéu como está", "Tirar o broche de estrela"]
   },
   {
-    titulo: "Diálogo 2",
+    titulo: "A foto perfeita",
     falas: [
-      { personagem: "Personagem", texto: "Teste", lado: "esquerda" },
-      { personagem: "Personagem", texto: "Teste", lado: "esquerda" }
+      { personagem: "", texto: "Ainda diante do espelho, ela termina de se arrumar.", lado: "centro" },
+      { personagem: "Protagonista", texto: "Pronto. Agora sim.", lado: "esquerda" },
+      { personagem: "Protagonista", texto: "Mas antes... uma fotinha.", lado: "esquerda" },
+      { personagem: "", texto: "Ela aproxima o celular do espelho e tira outra foto.", lado: "centro" },
+      { personagem: "Protagonista", texto: "Essa ficou boa!", lado: "esquerda" },
+      { personagem: "", texto: "Na rede social, a foto aparece na prévia de uma nova publicação.", lado: "centro" },
+      { personagem: "", texto: "A legenda diz: “bom dia da bruxa mais atrasada dessa cidade 🧙‍♀️✨”.", lado: "centro" },
+      { personagem: "", texto: "Ela leva o dedo ao botão de publicar, mas hesita.", lado: "centro" },
+      { personagem: "Protagonista (pensamento)", texto: "Hmm...", lado: "esquerda" },
+      { personagem: "Protagonista (pensamento)", texto: "Será que essa ficou boa mesmo?", lado: "esquerda" },
+      { personagem: "Protagonista (pensamento)", texto: "E essa legenda...", lado: "esquerda" }
     ],
-    opcoes: ["Opção 1", "Opção 2", "Opção 3"]
+    opcoes: ["Postar sem mudar nada", "Editar foto e legenda", "Desistir de publicar"]
   },
   {
-    titulo: "Diálogo 3",
+    titulo: "Quanto custa sair de casa?",
     falas: [
-      { personagem: "Personagem", texto: "Teste", lado: "esquerda" },
-      { personagem: "Personagem", texto: "Teste", lado: "esquerda" }
+      { personagem: "", texto: "Ela pega a bolsa e confere o que vai levar antes de sair do quarto.", lado: "centro" },
+      { personagem: "Protagonista", texto: "Tá, carteira, celular, chave...", lado: "esquerda" },
+      { personagem: "Protagonista", texto: "Espero não ter esquecido nada dessa vez.", lado: "esquerda" },
+      { personagem: "", texto: "O celular vibra. Desta vez, a mãe mandou mensagens:", lado: "centro" },
+      { personagem: "Mãe", texto: "SAL DE LUA!!!", lado: "direita" },
+      { personagem: "Mãe", texto: "NÃO ESQUECE 😡", lado: "direita" },
+      { personagem: "Mãe", texto: "e cuidado na rua ❤️", lado: "direita" },
+      { personagem: "Protagonista", texto: "É… minha mãe faz esse trabalho de me lembrar das coisas", lado: "esquerda" },
+      { personagem: "", texto: "Ela abre o Táxi Arcano e informa o destino: Mercado Lua Nova.", lado: "centro" },
+      { personagem: "", texto: "A corrida custa 10 moedas, exatamente o saldo que ela tem.", lado: "centro" },
+      { personagem: "", texto: "A alternativa é caminhar por quinze minutos até o mercado.", lado: "centro" },
+      { personagem: "Protagonista", texto: "Dez moedas?!", lado: "esquerda" },
+      { personagem: "Protagonista", texto: "Nossa, até parece que o carro vem voando.", lado: "esquerda" },
+      { personagem: "Protagonista", texto: "...se bem que às vezes vem.", lado: "esquerda" },
+      { personagem: "Protagonista", texto: "Bom, o mercado nem é tão longe.", lado: "esquerda" }
     ],
-    opcoes: ["Opção 1", "Opção 2", "Opção 3"]
+    opcoes: ["Ir a pé — saldo: 10 moedas", "Chamar táxi — saldo: 0 moedas"]
   }
 ];
 

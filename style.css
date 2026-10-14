@@ -24,7 +24,7 @@ body {
 
 .jogo {
   width: 100%;
-  max-width: 420px;
+  max-width: 500px;
   min-height: 100vh;
   margin: 0 auto;
   padding: 32px;
@@ -67,11 +67,25 @@ h1 {
 }
 
 #cena {
-  height: 100vh;
   background-image: url("assets/fundo.gif");
   background-size: cover;
   background-position: center;
-  justify-content: space-between;
+  height: 100vh;
+  height: 100dvh;
+  min-height: 480px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr) minmax(0, 2fr);
+  gap: 0;
+}
+
+#cenario {
+  min-height: 0;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 #dialogo,
@@ -81,12 +95,13 @@ h1 {
   gap: 16px;
 }
 
-#sair,
 #dialogo {
-  flex-shrink: 0;
+  min-height: 0;
+  padding: 10px 16px;
 }
 
 #sair {
+  flex-shrink: 0;
   align-self: flex-end;
   padding: 8px 12px;
   background: var(--fundo-claro);
@@ -100,8 +115,8 @@ h1 {
 
 #conversa {
   flex: 1;
-  min-height: 120px;
-  overflow-y: auto;
+  min-height: 0;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   gap: 12px;

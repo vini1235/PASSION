@@ -151,7 +151,25 @@ function mostrarCena() {
       escolhas.append(botao);
     });
   }
-  conversa.scrollTop = conversa.scrollHeight;
+  ajustarConversa();
+}
+
+function ajustarConversa() {
+  const cena = document.getElementById("cena");
+  cena.style.minHeight = "";
+  if (cena.hidden || conversa.hidden || !conversa.lastElementChild) {
+    return;
+  }
+
+  while (conversa.children.length > 1 && conversa.scrollHeight > conversa.clientHeight) {
+    conversa.firstElementChild.remove();
+  }
+
+  if (conversa.scrollHeight > conversa.clientHeight) {
+    const painel = document.getElementById("dialogo");
+    const altura = painel.clientHeight - conversa.clientHeight + conversa.scrollHeight;
+    cena.style.minHeight = Math.ceil(altura * 3) + "px";
+  }
 }
 
 function adicionarMensagem(fala) {
@@ -340,5 +358,6 @@ document.getElementById("sair").addEventListener("click", sairDoJogo);
 document.getElementById("estatisticas-menu").addEventListener("click", mostrarEstatisticas);
 estatisticasFim.addEventListener("click", mostrarEstatisticas);
 document.getElementById("voltar").addEventListener("click", () => mostrarTela("menu"));
+window.addEventListener("resize", ajustarConversa);
 
 mostrarTela("menu");

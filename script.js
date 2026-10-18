@@ -1,19 +1,20 @@
 const dialogos = [
   {
     titulo: "Bom dia, bruxinha / O chapéu",
+    cenario: "quarto",
     falas: [
       { personagem: "", texto: "É de manhã, no quarto da protagonista. Roupas estão espalhadas e objetos mágicos se misturam às coisas do dia a dia.", lado: "centro" },
       { personagem: "", texto: "Um chapéu de bruxa está sobre a cama. O celular carrega enquanto o despertador toca.", lado: "centro" },
       { personagem: "Protagonista", texto: "Ah, não...", lado: "esquerda" },
       { personagem: "Protagonista", texto: "Já tá na hora?", lado: "esquerda" },
-      { personagem: "", texto: "Ela pega o celular. São 8h12.", lado: "centro" },
+      { personagem: "", texto: "Ela pega o celular. São 8h12.", lado: "centro", cenario: "celular" },
       { personagem: "Protagonista", texto: "Se eu me atrasar mais uma vez, meu chefe vai me transformar num sapo.", lado: "esquerda" },
       { personagem: "Protagonista", texto: "De novo.", lado: "esquerda" },
       { personagem: "", texto: "Uma notificação do Passion aparece no celular:", lado: "centro" },
       { personagem: "", texto: "“Seu acompanhamento está pronto para começar! Viva seu dia normalmente. ✨”", lado: "centro" },
       { personagem: "Protagonista", texto: "Ah, é. O aplicativo que eu instalei ontem...", lado: "esquerda" },
       { personagem: "Protagonista", texto: "Depois eu vejo isso.", lado: "esquerda" },
-      { personagem: "", texto: "A voz da mãe vem de fora do quarto.", lado: "centro" },
+      { personagem: "", texto: "A voz da mãe vem de fora do quarto.", lado: "centro", cenario: "quarto" },
       { personagem: "Mãe", texto: "FILHAAAA!", lado: "direita" },
       { personagem: "Protagonista", texto: "QUE FOI, MÃE?", lado: "esquerda" },
       { personagem: "Mãe", texto: "PASSA NO MERCADO ANTES DO TRABALHO!", lado: "direita" },
@@ -25,7 +26,7 @@ const dialogos = [
       { personagem: "", texto: "Ela suspira.", lado: "centro" },
       { personagem: "Protagonista", texto: "Mercado, trabalho, mercado...", lado: "esquerda" },
       { personagem: "Protagonista", texto: "Bom, primeiro eu preciso me vestir.", lado: "esquerda" },
-      { personagem: "", texto: "Pouco depois, ela está diante do espelho, já com a roupa de trabalho e o chapéu de bruxa.", lado: "centro" },
+      { personagem: "", texto: "Pouco depois, ela está diante do espelho, já com a roupa de trabalho e o chapéu de bruxa.", lado: "centro", cenario: "espelho" },
       { personagem: "", texto: "Um pequeno broche de estrela brilha no chapéu.", lado: "centro" },
       { personagem: "Protagonista", texto: "Tá. Até que eu tô arrumadinha.", lado: "esquerda" },
       { personagem: "Protagonista", texto: "Esse broche ficou muito fofo.", lado: "esquerda" },
@@ -42,6 +43,7 @@ const dialogos = [
   },
   {
     titulo: "A foto perfeita",
+    cenario: "espelho",
     falas: [
       { personagem: "", texto: "Ainda diante do espelho, ela termina de se arrumar.", lado: "centro" },
       { personagem: "Protagonista", texto: "Pronto. Agora sim.", lado: "esquerda" },
@@ -59,6 +61,7 @@ const dialogos = [
   },
   {
     titulo: "Quanto custa sair de casa?",
+    cenario: "quarto",
     falas: [
       { personagem: "", texto: "Ela pega a bolsa e confere o que vai levar antes de sair do quarto.", lado: "centro" },
       { personagem: "Protagonista", texto: "Tá, carteira, celular, chave...", lado: "esquerda" },
@@ -81,6 +84,8 @@ const dialogos = [
 ];
 
 const chaveProgresso = "passion-progresso";
+const cena = document.getElementById("cena");
+const personagemCena = document.getElementById("personagem-cena");
 const continuar = document.getElementById("continuar");
 const comecar = document.getElementById("comecar");
 const conversa = document.getElementById("conversa");
@@ -206,11 +211,34 @@ function mostrarCena() {
       escolhas.append(botao);
     });
   }
+  atualizarCenario();
   ajustarConversa();
 }
 
+function atualizarCenario() {
+  const dialogo = dialogos[partida.dialogo];
+  let cenario = dialogo.cenario;
+
+  for (let i = partida.fala; i >= 0; i--) {
+    if (dialogo.falas[i].cenario) {
+      cenario = dialogo.falas[i].cenario;
+      break;
+    }
+  }
+
+  let imagem = "quarto1.png";
+  if (cenario === "celular") {
+    imagem = "celular.png";
+  }
+  if (cenario === "espelho") {
+    imagem = partida.escolhas[0]?.opcao === 1 ? "espelho2sembroche.png" : "espelho1broche.png";
+  }
+
+  cena.style.backgroundImage = 'url("assets/' + imagem + '")';
+  personagemCena.hidden = cenario !== "quarto" || partida.etapa === "cena";
+}
+
 function ajustarConversa() {
-  const cena = document.getElementById("cena");
   cena.style.minHeight = "";
   if (cena.hidden || conversa.hidden || !conversa.lastElementChild) {
     return;

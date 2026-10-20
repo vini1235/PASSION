@@ -407,13 +407,21 @@ function escolher(indiceDialogo, indiceOpcao) {
 function mostrarEstatisticas() {
   const respostas = document.getElementById("respostas");
   const realizadas = partida ? partida.escolhas : [];
-  document.getElementById("quantidade").textContent = "Escolhas realizadas: " + realizadas.length;
+  const total = document.createElement("strong");
+  total.textContent = realizadas.length;
+  const descricao = realizadas.length === 1 ? "escolha realizada" : "escolhas realizadas";
+  document.getElementById("quantidade").replaceChildren(total, " " + descricao);
   respostas.replaceChildren();
+  respostas.hidden = realizadas.length === 0;
 
   realizadas.forEach((resposta) => {
     const item = document.createElement("li");
     const dialogo = dialogos[resposta.dialogo];
-    item.textContent = dialogo.titulo + ": " + dialogo.opcoes[resposta.opcao];
+    const titulo = document.createElement("strong");
+    titulo.textContent = dialogo.titulo;
+    const escolha = document.createElement("p");
+    escolha.textContent = dialogo.opcoes[resposta.opcao];
+    item.append(titulo, escolha);
     respostas.append(item);
   });
   mostrarTela("estatisticas");

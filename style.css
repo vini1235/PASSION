@@ -196,8 +196,43 @@ h1 {
   margin-top: 24px;
 }
 
-#respostas {
+#estatisticas {
+  justify-content: flex-start;
   text-align: left;
+}
+
+#quantidade {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  border-radius: 6px;
+  background: var(--lilas-bem-clarinho);
+  color: var(--cinza-roxo);
+}
+
+#quantidade strong {
+  font-size: 36px;
+  line-height: 1;
+}
+
+#respostas {
+  margin: 0;
+  padding-left: 24px;
+}
+
+#respostas li {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--lilas-bem-clarinho);
+}
+
+#respostas p {
+  margin-top: 4px;
+  color: var(--texto-secundario);
+}
+
+#voltar {
+  margin-top: auto;
 }
 
 [hidden] {

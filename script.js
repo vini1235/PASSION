@@ -84,6 +84,7 @@ const dialogos = [
 ];
 
 const chaveProgresso = "passion-progresso";
+const limiteTrecho = 160;
 const cena = document.getElementById("cena");
 const personagemCena = document.getElementById("personagem-cena");
 const continuar = document.getElementById("continuar");
@@ -97,6 +98,32 @@ let partida = carregarProgresso();
 let temProgressoSalvo = partida !== null;
 let avisoSalvamento = false;
 
+function dividirFala(texto, lado, limite = limiteTrecho) {
+  if (lado === "centro") {
+    return [texto];
+  }
+
+  const trechos = [];
+
+  for (const linha of texto.split(/\n+/)) {
+    let trecho = "";
+    for (const palavra of linha.trim().split(/\s+/)) {
+      const proximoTrecho = trecho ? trecho + " " + palavra : palavra;
+      if (trecho && proximoTrecho.length > limite) {
+        trechos.push(trecho);
+        trecho = palavra;
+      } else {
+        trecho = proximoTrecho;
+      }
+    }
+    if (trecho) {
+      trechos.push(trecho);
+    }
+  }
+
+  return trechos.length ? trechos : [""];
+}
+
 function progressoValido(dados) {
   if (!dados || dados.versao !== 1) {
     return false;
@@ -108,6 +135,19 @@ function progressoValido(dados) {
   }
 
   if (!Number.isInteger(dados.fala) || dados.fala < 0 || dados.fala >= dialogo.falas.length) {
+    return false;
+  }
+
+  const fala = dialogo.falas[dados.fala];
+  const trecho = dados.trecho === undefined ? 0 : dados.trecho;
+  const quantidadeTrechos = dividirFala(fala.texto, fala.lado).length;
+  if (!Number.isInteger(trecho) || trecho < 0) {
+    return false;
+  }
+  if (trecho >= quantidadeTrechos && trecho >= dividirFala(fala.texto, undefined, 90).length) {
+    return false;
+  }
+  if (dados.etapa !== "fala" && trecho !== 0) {
     return false;
   }
 
@@ -146,6 +186,12 @@ function carregarProgresso() {
   try {
     const dados = JSON.parse(localStorage.getItem(chaveProgresso));
     if (progressoValido(dados)) {
+      const fala = dialogos[dados.dialogo].falas[dados.fala];
+      const quantidadeTrechos = dividirFala(fala.texto, fala.lado).length;
+      dados.trecho = dados.trecho === undefined ? 0 : dados.trecho;
+      if (dados.trecho >= quantidadeTrechos) {
+        dados.trecho = 0;
+      }
       return dados;
     }
     return null;
@@ -255,7 +301,7 @@ function ajustarConversa() {
   }
 }
 
-function adicionarMensagem(fala) {
+function adicionarMensagem(fala, texto = fala.texto) {
   const balao = document.createElement("p");
   balao.className = "mensagem";
 
@@ -270,8 +316,14 @@ function adicionarMensagem(fala) {
   if (fala.lado === "direita") {
     balao.classList.add("direita");
   }
-  balao.append(document.createTextNode(fala.texto));
+  balao.append(document.createTextNode(texto));
   conversa.append(balao);
+}
+
+function adicionarFalaAtual() {
+  const fala = dialogos[partida.dialogo].falas[partida.fala];
+  const trechos = dividirFala(fala.texto, fala.lado);
+  adicionarMensagem(fala, trechos[partida.trecho]);
 }
 
 function adicionarEscolha(resposta) {
@@ -297,7 +349,15 @@ function reconstruirConversa() {
     }
 
     for (let j = 0; j < quantidade; j++) {
-      adicionarMensagem(dialogo.falas[j]);
+      const fala = dialogo.falas[j];
+      const trechos = dividirFala(fala.texto, fala.lado);
+      let quantidadeTrechos = trechos.length;
+      if (i === partida.dialogo && j === partida.fala && partida.etapa === "fala") {
+        quantidadeTrechos = partida.trecho + 1;
+      }
+      for (let k = 0; k < quantidadeTrechos; k++) {
+        adicionarMensagem(fala, trechos[k]);
+      }
     }
 
     const resposta = partida.escolhas[i];
@@ -327,6 +387,7 @@ function escolher(indiceDialogo, indiceOpcao) {
   if (partida.dialogo < dialogos.length - 1) {
     partida.dialogo++;
     partida.fala = 0;
+    partida.trecho = 0;
     partida.etapa = "fala";
   } else {
     partida.etapa = "fim";
@@ -336,7 +397,7 @@ function escolher(indiceDialogo, indiceOpcao) {
     mostrarModal("Escolha registrada: " + dialogos[indiceDialogo].opcoes[indiceOpcao], false, () => {
       adicionarEscolha(resposta);
       if (partida.etapa === "fala") {
-        adicionarMensagem(dialogos[partida.dialogo].falas[partida.fala]);
+        adicionarFalaAtual();
       }
       mostrarCena();
     });
@@ -379,6 +440,7 @@ function iniciarPartida() {
     versao: 1,
     dialogo: 0,
     fala: 0,
+    trecho: 0,
     etapa: "cena",
     escolhas: []
   };
@@ -409,7 +471,7 @@ function comecarDialogo() {
     return;
   }
   partida.etapa = "fala";
-  adicionarMensagem(dialogos[partida.dialogo].falas[partida.fala]);
+  adicionarFalaAtual();
   salvarProgresso(mostrarCena);
 }
 
@@ -417,10 +479,18 @@ function avancarFala() {
   if (modal.open || !partida || partida.etapa !== "fala") {
     return;
   }
-  if (partida.fala < dialogos[partida.dialogo].falas.length - 1) {
+  const falas = dialogos[partida.dialogo].falas;
+  const fala = falas[partida.fala];
+  const trechos = dividirFala(fala.texto, fala.lado);
+  if (partida.trecho < trechos.length - 1) {
+    partida.trecho++;
+    adicionarFalaAtual();
+  } else if (partida.fala < falas.length - 1) {
     partida.fala++;
-    adicionarMensagem(dialogos[partida.dialogo].falas[partida.fala]);
+    partida.trecho = 0;
+    adicionarFalaAtual();
   } else {
+    partida.trecho = 0;
     partida.etapa = "escolhas";
   }
   salvarProgresso(mostrarCena);
@@ -442,5 +512,6 @@ document.getElementById("estatisticas-menu").addEventListener("click", mostrarEs
 estatisticasFim.addEventListener("click", mostrarEstatisticas);
 document.getElementById("voltar").addEventListener("click", () => mostrarTela("menu"));
 window.addEventListener("resize", ajustarConversa);
+document.fonts.addEventListener("loadingdone", ajustarConversa);
 
 mostrarTela("menu");

@@ -1,3 +1,19 @@
+@font-face {
+  font-family: "Nunito";
+  src: url("assets/nunito-regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nunito";
+  src: url("assets/nunito-negrito.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --fundo-externo: #e9e8e6;
   --fundo-claro: #faf9f6;
@@ -6,7 +22,6 @@
   --cinza-roxo: #655563;
   --cinza-roxo-escuro: #51434f;
   --lilas-bem-clarinho: #e8e0e8;
-  --branco: #fff;
   --sobreposicao: #0006;
 }
 
@@ -18,7 +33,7 @@ body {
   margin: 0;
   background: var(--fundo-externo);
   color: var(--texto);
-  font-family: Arial, sans-serif;
+  font-family: "Nunito", Arial, sans-serif;
   line-height: 1.6;
 }
 
@@ -54,16 +69,22 @@ h1 {
 }
 
 .botao-iniciar {
-  padding: 16px;
+  padding: 16px 24px;
   border: 0;
   border-radius: 6px;
-  background: var(--cinza-roxo);
-  color: var(--branco);
+  background: transparent url("assets/botao.png") 60% center / 153% auto no-repeat;
+  color: var(--texto);
   font: inherit;
+  cursor: pointer;
 }
 
 .botao-iniciar:hover {
-  background: var(--cinza-roxo-escuro);
+  filter: brightness(0.94);
+}
+
+.botao-iniciar:focus-visible {
+  outline: 2px solid var(--cinza-roxo-escuro);
+  outline-offset: 3px;
 }
 
 #cena {
@@ -135,9 +156,9 @@ h1 {
   flex-shrink: 0;
   align-self: flex-start;
   max-width: 90%;
-  padding: 12px 16px;
+  padding: 12px 24px;
   border-radius: 12px;
-  background: var(--fundo-claro);
+  background: transparent url("assets/falaprotagonista.png") 70% center / 133% auto no-repeat;
   text-align: left;
   overflow-wrap: anywhere;
 }
@@ -148,6 +169,7 @@ h1 {
 
 .mensagem.narracao {
   align-self: center;
+  padding: 12px 16px;
   background: var(--lilas-bem-clarinho);
   text-align: center;
   font-size: 14px;

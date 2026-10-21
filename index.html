@@ -10,10 +10,18 @@
   <body>
     <div id="aviso-rotacao">Por favor, vire o celular</div>
 
+    <!-- js alternando as telas usando hidden -->
     <main class="jogo" id="menu">
       <header class="introducao">
         <p class="subtitulo">Uma história interativa</p>
-        <h1 id="titulo-jogo"><img src="assets/titulo-passion.svg" alt="Passion" width="204" height="52" /></h1>
+        <h1 id="titulo-jogo">
+          <img
+            src="assets/titulo-passion.svg"
+            alt="Passion"
+            width="204"
+            height="52"
+          />
+        </h1>
       </header>
 
       <button class="botao-iniciar" id="novo-jogo" type="button">
@@ -45,12 +53,16 @@
       </section>
     </main>
 
+    <!-- agradecimento, resultados e depois estatísticas -->
     <main class="jogo" id="fim" hidden>
       <header>
         <p class="subtitulo">Passion</p>
         <h2>Obrigado por jogar a demo!</h2>
       </header>
-      <p>Este foi um primeiro olhar para a história de Passion. Obrigado por fazer parte desse começo.</p>
+      <p>
+        Este foi um primeiro olhar para a história de Passion. Obrigado por
+        fazer parte desse começo.
+      </p>
       <button class="botao-iniciar" id="ver-resultados" type="button">
         Ver resultados
       </button>
@@ -64,7 +76,9 @@
         </header>
         <p id="resumo-resultado"></p>
         <p id="influencias"></p>
-        <p class="footer">Uma leitura das escolhas da personagem neste trecho da história.</p>
+        <p class="footer">
+          Uma leitura das escolhas da personagem neste trecho da história.
+        </p>
       </div>
       <button class="botao-iniciar" id="estatisticas-fim" type="button">
         Ver estatísticas
@@ -85,6 +99,7 @@
       </button>
     </main>
 
+    <!--modal, usando dialog pra bloquear interalção com fundo-->
     <dialog id="modal">
       <p id="mensagem-modal"></p>
       <form method="dialog">

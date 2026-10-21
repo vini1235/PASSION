@@ -1,112 +1,321 @@
+// roteiro: edite aqui as falas e opções
+// esquerda: protagonista; direita: outros personagens; centro: narração.
 const dialogos = [
   {
     titulo: "Bom dia, bruxinha / O chapéu",
     cenario: "quarto",
     falas: [
-      { personagem: "", texto: "É de manhã, no quarto da protagonista. Roupas estão espalhadas e objetos mágicos se misturam às coisas do dia a dia.", lado: "centro" },
-      { personagem: "", texto: "Um chapéu de bruxa está sobre a cama. O celular carrega enquanto o despertador toca.", lado: "centro" },
+      {
+        personagem: "",
+        texto:
+          "É de manhã, no quarto da protagonista. Roupas estão espalhadas e objetos mágicos se misturam às coisas do dia a dia.",
+        lado: "centro",
+      },
+      {
+        personagem: "",
+        texto:
+          "Um chapéu de bruxa está sobre a cama. O celular carrega enquanto o despertador toca.",
+        lado: "centro",
+      },
       { personagem: "Protagonista", texto: "Ah, não...", lado: "esquerda" },
       { personagem: "Protagonista", texto: "Já tá na hora?", lado: "esquerda" },
-      { personagem: "", texto: "Ela pega o celular. São 8h12.", lado: "centro", cenario: "celular" },
-      { personagem: "Protagonista", texto: "Se eu me atrasar mais uma vez, meu chefe vai me transformar num sapo.", lado: "esquerda" },
+      {
+        personagem: "",
+        texto: "Ela pega o celular. São 8h12.",
+        lado: "centro",
+        cenario: "celular",
+      },
+      {
+        personagem: "Protagonista",
+        texto:
+          "Se eu me atrasar mais uma vez, meu chefe vai me transformar num sapo.",
+        lado: "esquerda",
+      },
       { personagem: "Protagonista", texto: "De novo.", lado: "esquerda" },
-      { personagem: "", texto: "Uma notificação do Passion aparece no celular:", lado: "centro" },
-      { personagem: "", texto: "“Seu acompanhamento está pronto para começar! Viva seu dia normalmente. ✨”", lado: "centro" },
-      { personagem: "Protagonista", texto: "Ah, é. O aplicativo que eu instalei ontem...", lado: "esquerda" },
-      { personagem: "Protagonista", texto: "Depois eu vejo isso.", lado: "esquerda" },
-      { personagem: "", texto: "A voz da mãe vem de fora do quarto.", lado: "centro", cenario: "quarto" },
+      {
+        personagem: "",
+        texto: "Uma notificação do Passion aparece no celular:",
+        lado: "centro",
+      },
+      {
+        personagem: "",
+        texto:
+          "“Seu acompanhamento está pronto para começar! Viva seu dia normalmente. ✨”",
+        lado: "centro",
+      },
+      {
+        personagem: "Protagonista",
+        texto: "Ah, é. O aplicativo que eu instalei ontem...",
+        lado: "esquerda",
+      },
+      {
+        personagem: "Protagonista",
+        texto: "Depois eu vejo isso.",
+        lado: "esquerda",
+      },
+      {
+        personagem: "",
+        texto: "A voz da mãe vem de fora do quarto.",
+        lado: "centro",
+        cenario: "quarto",
+      },
       { personagem: "Mãe", texto: "FILHAAAA!", lado: "direita" },
       { personagem: "Protagonista", texto: "QUE FOI, MÃE?", lado: "esquerda" },
-      { personagem: "Mãe", texto: "PASSA NO MERCADO ANTES DO TRABALHO!", lado: "direita" },
+      {
+        personagem: "Mãe",
+        texto: "PASSA NO MERCADO ANTES DO TRABALHO!",
+        lado: "direita",
+      },
       { personagem: "Protagonista", texto: "Pra quêêê?", lado: "esquerda" },
-      { personagem: "Mãe", texto: "ACABOU O SAL DE LUA DO CALDEIRÃO!", lado: "direita" },
+      {
+        personagem: "Mãe",
+        texto: "ACABOU O SAL DE LUA DO CALDEIRÃO!",
+        lado: "direita",
+      },
       { personagem: "Protagonista", texto: "De novo?!", lado: "esquerda" },
-      { personagem: "Mãe", texto: "E NÃO ESQUECE! JÁ DEIXEI PAGO, É SÓ BUSCAR!", lado: "direita" },
+      {
+        personagem: "Mãe",
+        texto: "E NÃO ESQUECE! JÁ DEIXEI PAGO, É SÓ BUSCAR!",
+        lado: "direita",
+      },
       { personagem: "Protagonista", texto: "Tááá bom, mãe!", lado: "esquerda" },
       { personagem: "", texto: "Ela suspira.", lado: "centro" },
-      { personagem: "Protagonista", texto: "Mercado, trabalho, mercado...", lado: "esquerda" },
-      { personagem: "Protagonista", texto: "Bom, primeiro eu preciso me vestir.", lado: "esquerda" },
-      { personagem: "", texto: "Pouco depois, ela está diante do espelho, já com a roupa de trabalho e o chapéu de bruxa.", lado: "centro", cenario: "espelho" },
-      { personagem: "", texto: "Um pequeno broche de estrela brilha no chapéu.", lado: "centro" },
-      { personagem: "Protagonista", texto: "Tá. Até que eu tô arrumadinha.", lado: "esquerda" },
-      { personagem: "Protagonista", texto: "Esse broche ficou muito fofo.", lado: "esquerda" },
-      { personagem: "", texto: "Ela pega o celular e manda uma foto no espelho para a amiga Bia.", lado: "centro" },
+      {
+        personagem: "Protagonista",
+        texto: "Mercado, trabalho, mercado...",
+        lado: "esquerda",
+      },
+      {
+        personagem: "Protagonista",
+        texto: "Bom, primeiro eu preciso me vestir.",
+        lado: "esquerda",
+      },
+      {
+        personagem: "",
+        texto:
+          "Pouco depois, ela está diante do espelho, já com a roupa de trabalho e o chapéu de bruxa.",
+        lado: "centro",
+        cenario: "espelho",
+      },
+      {
+        personagem: "",
+        texto: "Um pequeno broche de estrela brilha no chapéu.",
+        lado: "centro",
+      },
+      {
+        personagem: "Protagonista",
+        texto: "Tá. Até que eu tô arrumadinha.",
+        lado: "esquerda",
+      },
+      {
+        personagem: "Protagonista",
+        texto: "Esse broche ficou muito fofo.",
+        lado: "esquerda",
+      },
+      {
+        personagem: "",
+        texto:
+          "Ela pega o celular e manda uma foto no espelho para a amiga Bia.",
+        lado: "centro",
+      },
       { personagem: "Protagonista", texto: "fit de hoje ✨", lado: "esquerda" },
       { personagem: "Bia", texto: "nossa amiga", lado: "direita" },
-      { personagem: "Bia", texto: "vai com esse chapéu pro trabalho mesmo???", lado: "direita" },
-      { personagem: "Bia", texto: "olha o tamanho dessa estrela 😭", lado: "direita" },
-      { personagem: "Protagonista (pensamento)", texto: "Ué...", lado: "esquerda" },
-      { personagem: "Protagonista (pensamento)", texto: "Eu tinha gostado.", lado: "esquerda" },
-      { personagem: "", texto: "Ela olha novamente para o espelho, observando a estrela no chapéu.", lado: "centro" }
+      {
+        personagem: "Bia",
+        texto: "vai com esse chapéu pro trabalho mesmo???",
+        lado: "direita",
+      },
+      {
+        personagem: "Bia",
+        texto: "olha o tamanho dessa estrela 😭",
+        lado: "direita",
+      },
+      {
+        personagem: "Protagonista (pensamento)",
+        texto: "Ué...",
+        lado: "esquerda",
+      },
+      {
+        personagem: "Protagonista (pensamento)",
+        texto: "Eu tinha gostado.",
+        lado: "esquerda",
+      },
+      {
+        personagem: "",
+        texto:
+          "Ela olha novamente para o espelho, observando a estrela no chapéu.",
+        lado: "centro",
+      },
     ],
     opcoes: ["Manter o chapéu como está", "Tirar o broche de estrela"],
-    influencias: ["autonomia", "inseguranca"]
+    influencias: ["autonomia", "inseguranca"],
   },
   {
     titulo: "A foto perfeita",
     cenario: "espelho",
     falas: [
-      { personagem: "", texto: "Ainda diante do espelho, ela termina de se arrumar.", lado: "centro" },
-      { personagem: "Protagonista", texto: "Pronto. Agora sim.", lado: "esquerda" },
-      { personagem: "Protagonista", texto: "Mas antes... uma fotinha.", lado: "esquerda" },
-      { personagem: "", texto: "Ela aproxima o celular do espelho e tira outra foto.", lado: "centro" },
-      { personagem: "Protagonista", texto: "Essa ficou boa!", lado: "esquerda" },
-      { personagem: "", texto: "Na rede social, a foto aparece na prévia de uma nova publicação.", lado: "centro" },
-      { personagem: "", texto: "A legenda diz: “bom dia da bruxa mais atrasada dessa cidade 🧙‍♀️✨”.", lado: "centro" },
-      { personagem: "", texto: "Ela leva o dedo ao botão de publicar, mas hesita.", lado: "centro" },
-      { personagem: "Protagonista (pensamento)", texto: "Hmm...", lado: "esquerda" },
-      { personagem: "Protagonista (pensamento)", texto: "Será que essa ficou boa mesmo?", lado: "esquerda" },
-      { personagem: "Protagonista (pensamento)", texto: "E essa legenda...", lado: "esquerda" }
+      {
+        personagem: "",
+        texto: "Ainda diante do espelho, ela termina de se arrumar.",
+        lado: "centro",
+      },
+      {
+        personagem: "Protagonista",
+        texto: "Pronto. Agora sim.",
+        lado: "esquerda",
+      },
+      {
+        personagem: "Protagonista",
+        texto: "Mas antes... uma fotinha.",
+        lado: "esquerda",
+      },
+      {
+        personagem: "",
+        texto: "Ela aproxima o celular do espelho e tira outra foto.",
+        lado: "centro",
+      },
+      {
+        personagem: "Protagonista",
+        texto: "Essa ficou boa!",
+        lado: "esquerda",
+      },
+      {
+        personagem: "",
+        texto:
+          "Na rede social, a foto aparece na prévia de uma nova publicação.",
+        lado: "centro",
+      },
+      {
+        personagem: "",
+        texto:
+          "A legenda diz: “bom dia da bruxa mais atrasada dessa cidade 🧙‍♀️✨”.",
+        lado: "centro",
+      },
+      {
+        personagem: "",
+        texto: "Ela leva o dedo ao botão de publicar, mas hesita.",
+        lado: "centro",
+      },
+      {
+        personagem: "Protagonista (pensamento)",
+        texto: "Hmm...",
+        lado: "esquerda",
+      },
+      {
+        personagem: "Protagonista (pensamento)",
+        texto: "Será que essa ficou boa mesmo?",
+        lado: "esquerda",
+      },
+      {
+        personagem: "Protagonista (pensamento)",
+        texto: "E essa legenda...",
+        lado: "esquerda",
+      },
     ],
-    opcoes: ["Postar sem mudar nada", "Editar foto e legenda", "Desistir de publicar"],
-    influencias: ["autonomia", "inseguranca", "autocensura"]
+    opcoes: [
+      "Postar sem mudar nada",
+      "Editar foto e legenda",
+      "Desistir de publicar",
+    ],
+    influencias: ["autonomia", "inseguranca", "autocensura"],
   },
   {
     titulo: "Quanto custa sair de casa?",
     cenario: "quarto",
     falas: [
-      { personagem: "", texto: "Ela pega a bolsa e confere o que vai levar antes de sair do quarto.", lado: "centro" },
-      { personagem: "Protagonista", texto: "Tá, carteira, celular, chave...", lado: "esquerda" },
-      { personagem: "Protagonista", texto: "Espero não ter esquecido nada dessa vez.", lado: "esquerda" },
-      { personagem: "", texto: "O celular vibra. Desta vez, a mãe mandou mensagens:", lado: "centro" },
+      {
+        personagem: "",
+        texto:
+          "Ela pega a bolsa e confere o que vai levar antes de sair do quarto.",
+        lado: "centro",
+      },
+      {
+        personagem: "Protagonista",
+        texto: "Tá, carteira, celular, chave...",
+        lado: "esquerda",
+      },
+      {
+        personagem: "Protagonista",
+        texto: "Espero não ter esquecido nada dessa vez.",
+        lado: "esquerda",
+      },
+      {
+        personagem: "",
+        texto: "O celular vibra. Desta vez, a mãe mandou mensagens:",
+        lado: "centro",
+      },
       { personagem: "Mãe", texto: "SAL DE LUA!!!", lado: "direita" },
       { personagem: "Mãe", texto: "NÃO ESQUECE 😡", lado: "direita" },
       { personagem: "Mãe", texto: "e cuidado na rua ❤️", lado: "direita" },
-      { personagem: "Protagonista", texto: "É… minha mãe faz esse trabalho de me lembrar das coisas", lado: "esquerda" },
-      { personagem: "", texto: "Ela abre o Táxi Arcano e informa o destino: Mercado Lua Nova.", lado: "centro" },
-      { personagem: "", texto: "A corrida custa 10 moedas, exatamente o saldo que ela tem.", lado: "centro" },
-      { personagem: "", texto: "A alternativa é caminhar por quinze minutos até o mercado.", lado: "centro" },
+      {
+        personagem: "Protagonista",
+        texto: "É… minha mãe faz esse trabalho de me lembrar das coisas",
+        lado: "esquerda",
+      },
+      {
+        personagem: "",
+        texto: "Ela abre o Táxi Arcano e informa o destino: Mercado Lua Nova.",
+        lado: "centro",
+      },
+      {
+        personagem: "",
+        texto: "A corrida custa 10 moedas, exatamente o saldo que ela tem.",
+        lado: "centro",
+      },
+      {
+        personagem: "",
+        texto: "A alternativa é caminhar por quinze minutos até o mercado.",
+        lado: "centro",
+      },
       { personagem: "Protagonista", texto: "Dez moedas?!", lado: "esquerda" },
-      { personagem: "Protagonista", texto: "Nossa, até parece que o carro vem voando.", lado: "esquerda" },
-      { personagem: "Protagonista", texto: "...se bem que às vezes vem.", lado: "esquerda" },
-      { personagem: "Protagonista", texto: "Bom, o mercado nem é tão longe.", lado: "esquerda" }
+      {
+        personagem: "Protagonista",
+        texto: "Nossa, até parece que o carro vem voando.",
+        lado: "esquerda",
+      },
+      {
+        personagem: "Protagonista",
+        texto: "...se bem que às vezes vem.",
+        lado: "esquerda",
+      },
+      {
+        personagem: "Protagonista",
+        texto: "Bom, o mercado nem é tão longe.",
+        lado: "esquerda",
+      },
     ],
     opcoes: ["Ir a pé — saldo: 10 moedas", "Chamar táxi — saldo: 0 moedas"],
-    influencias: ["dinheiro", "seguranca"]
-  }
+    influencias: ["dinheiro", "seguranca"],
+  },
 ];
 
+// textos dos resultados
 const influencias = {
   inseguranca: {
     titulo: "Insegurança com a imagem",
-    texto: "A preocupação com a própria imagem e com o olhar dos outros foi a influência predominante neste trecho da história."
+    texto:
+      "A preocupação com a própria imagem e com o olhar dos outros foi a influência predominante neste trecho da história.",
   },
   autocensura: {
     titulo: "Autocensura",
-    texto: "O receio de se expor e de ser julgada teve mais peso na forma como a personagem se expressou."
+    texto:
+      "O receio de se expor e de ser julgada teve mais peso na forma como a personagem se expressou.",
   },
   autonomia: {
     titulo: "Autonomia",
-    texto: "A confiança nas próprias preferências foi a influência predominante no caminho da personagem."
+    texto:
+      "A confiança nas próprias preferências foi a influência predominante no caminho da personagem.",
   },
   dinheiro: {
     titulo: "Custo do deslocamento",
-    texto: "A preocupação com os recursos disponíveis foi a influência predominante neste trecho da história."
+    texto:
+      "A preocupação com os recursos disponíveis foi a influência predominante neste trecho da história.",
   },
   seguranca: {
     titulo: "Segurança e conforto",
-    texto: "A busca por proteção e tranquilidade foi a influência predominante no caminho da personagem."
-  }
+    texto:
+      "A busca por proteção e tranquilidade foi a influência predominante no caminho da personagem.",
+  },
 };
 
 const chaveProgresso = "passion-progresso";
@@ -124,6 +333,7 @@ let partida = carregarProgresso();
 let temProgressoSalvo = partida !== null;
 let avisoSalvamento = false;
 
+// divide falas longas sem cortar palavras
 function dividirFala(texto, lado, limite = limiteTrecho) {
   if (lado === "centro") {
     return [texto];
@@ -150,6 +360,7 @@ function dividirFala(texto, lado, limite = limiteTrecho) {
   return trechos.length ? trechos : [""];
 }
 
+// confere se o ponto salvo e as escolhas estão validas antes de permitir a volta
 function progressoValido(dados) {
   if (!dados || dados.versao !== 1) {
     return false;
@@ -160,7 +371,11 @@ function progressoValido(dados) {
     return false;
   }
 
-  if (!Number.isInteger(dados.fala) || dados.fala < 0 || dados.fala >= dialogo.falas.length) {
+  if (
+    !Number.isInteger(dados.fala) ||
+    dados.fala < 0 ||
+    dados.fala >= dialogo.falas.length
+  ) {
     return false;
   }
 
@@ -170,14 +385,21 @@ function progressoValido(dados) {
   if (!Number.isInteger(trecho) || trecho < 0) {
     return false;
   }
-  if (trecho >= quantidadeTrechos && trecho >= dividirFala(fala.texto, undefined, 90).length) {
+  // aceita tbm partidas antigas, que dividiam as falas em trechos de 90 caracteres.
+  if (
+    trecho >= quantidadeTrechos &&
+    trecho >= dividirFala(fala.texto, undefined, 90).length
+  ) {
     return false;
   }
   if (dados.etapa !== "fala" && trecho !== 0) {
     return false;
   }
 
-  if (!Array.isArray(dados.escolhas) || dados.escolhas.length > dialogos.length) {
+  if (
+    !Array.isArray(dados.escolhas) ||
+    dados.escolhas.length > dialogos.length
+  ) {
     return false;
   }
 
@@ -186,7 +408,11 @@ function progressoValido(dados) {
     if (!resposta || resposta.dialogo !== i) {
       return false;
     }
-    if (!Number.isInteger(resposta.opcao) || resposta.opcao < 0 || resposta.opcao >= dialogos[i].opcoes.length) {
+    if (
+      !Number.isInteger(resposta.opcao) ||
+      resposta.opcao < 0 ||
+      resposta.opcao >= dialogos[i].opcoes.length
+    ) {
       return false;
     }
   }
@@ -194,7 +420,9 @@ function progressoValido(dados) {
   const ultimaFala = dialogo.falas.length - 1;
 
   if (dados.etapa === "cena") {
-    return dados.dialogo === 0 && dados.fala === 0 && dados.escolhas.length === 0;
+    return (
+      dados.dialogo === 0 && dados.fala === 0 && dados.escolhas.length === 0
+    );
   }
   if (dados.etapa === "fala") {
     return dados.escolhas.length === dados.dialogo;
@@ -203,7 +431,11 @@ function progressoValido(dados) {
     return dados.escolhas.length === dados.dialogo && dados.fala === ultimaFala;
   }
   if (dados.etapa === "fim" || dados.etapa === "resultados") {
-    return dados.dialogo === dialogos.length - 1 && dados.fala === ultimaFala && dados.escolhas.length === dialogos.length;
+    return (
+      dados.dialogo === dialogos.length - 1 &&
+      dados.fala === ultimaFala &&
+      dados.escolhas.length === dialogos.length
+    );
   }
   return false;
 }
@@ -226,34 +458,25 @@ function carregarProgresso() {
   }
 }
 
+// aoFechar é a função que sera chamada depois de fechar o aviso ou responder a confirmação
 function mostrarModal(mensagem, confirmar = false, aoFechar = null) {
   document.getElementById("mensagem-modal").textContent = mensagem;
   document.getElementById("cancelar-modal").hidden = !confirmar;
-  document.getElementById("confirmar-modal").textContent = confirmar ? "Novo jogo" : "OK";
+  document.getElementById("confirmar-modal").textContent = confirmar
+    ? "Novo jogo"
+    : "OK";
   modal.returnValue = "";
 
-  modal.addEventListener("close", () => {
-    if (aoFechar) {
-      aoFechar(modal.returnValue === "confirmar");
-    }
-  }, { once: true });
+  modal.addEventListener(
+    "close",
+    () => {
+      if (aoFechar) {
+        aoFechar(modal.returnValue === "confirmar");
+      }
+    },
+    { once: true },
+  );
   modal.showModal();
-}
-
-function salvarProgresso(aoTerminar = null) {
-  try {
-    localStorage.setItem(chaveProgresso, JSON.stringify(partida));
-    temProgressoSalvo = true;
-  } catch {
-    if (!avisoSalvamento) {
-      avisoSalvamento = true;
-      mostrarModal("Não foi possível salvar neste navegador. O progresso pode ser perdido ao sair ou recarregar a página.", false, aoTerminar);
-      return;
-    }
-  }
-  if (aoTerminar) {
-    aoTerminar();
-  }
 }
 
 function mostrarTela(id) {
@@ -287,7 +510,9 @@ function mostrarCena() {
       botao.type = "button";
       botao.className = "botao-iniciar";
       botao.textContent = opcao;
-      botao.addEventListener("click", () => escolher(indiceDialogo, indiceOpcao));
+      botao.addEventListener("click", () =>
+        escolher(indiceDialogo, indiceOpcao),
+      );
       escolhas.append(botao);
     });
   }
@@ -299,6 +524,7 @@ function atualizarCenario() {
   const dialogo = dialogos[partida.dialogo];
   let cenario = dialogo.cenario;
 
+  // mantém o último cenário indicado nas falas até encontrar uma nova mudança
   for (let i = partida.fala; i >= 0; i--) {
     if (dialogo.falas[i].cenario) {
       cenario = dialogo.falas[i].cenario;
@@ -311,7 +537,10 @@ function atualizarCenario() {
     imagem = "celular.png";
   }
   if (cenario === "espelho") {
-    imagem = partida.escolhas[0]?.opcao === 1 ? "espelho2sembroche.png" : "espelho1broche.png";
+    imagem =
+      partida.escolhas[0]?.opcao === 1
+        ? "espelho2sembroche.png"
+        : "espelho1broche.png";
   }
 
   cena.style.backgroundImage = 'url("assets/' + imagem + '")';
@@ -324,13 +553,18 @@ function ajustarConversa() {
     return;
   }
 
-  while (conversa.children.length > 1 && conversa.scrollHeight > conversa.clientHeight) {
+  // as mensagens mais antigas saem da tela
+  while (
+    conversa.children.length > 1 &&
+    conversa.scrollHeight > conversa.clientHeight
+  ) {
     conversa.firstElementChild.remove();
   }
 
   if (conversa.scrollHeight > conversa.clientHeight) {
     const painel = document.getElementById("dialogo");
-    const altura = painel.clientHeight - conversa.clientHeight + conversa.scrollHeight;
+    const altura =
+      painel.clientHeight - conversa.clientHeight + conversa.scrollHeight;
     cena.style.minHeight = Math.ceil(altura * 3) + "px";
   }
 }
@@ -365,10 +599,11 @@ function adicionarEscolha(resposta) {
   adicionarMensagem({
     personagem: "",
     texto: "Escolha: " + dialogo.opcoes[resposta.opcao],
-    lado: "centro"
+    lado: "centro",
   });
 }
 
+// usado ao continuar uma partida
 function reconstruirConversa() {
   conversa.replaceChildren();
   if (partida.etapa === "cena") {
@@ -386,7 +621,11 @@ function reconstruirConversa() {
       const fala = dialogo.falas[j];
       const trechos = dividirFala(fala.texto, fala.lado);
       let quantidadeTrechos = trechos.length;
-      if (i === partida.dialogo && j === partida.fala && partida.etapa === "fala") {
+      if (
+        i === partida.dialogo &&
+        j === partida.fala &&
+        partida.etapa === "fala"
+      ) {
         quantidadeTrechos = partida.trecho + 1;
       }
       for (let k = 0; k < quantidadeTrechos; k++) {
@@ -401,6 +640,7 @@ function reconstruirConversa() {
   }
 }
 
+// impedir registrar a mesma escolha duas vezes
 function escolher(indiceDialogo, indiceOpcao) {
   if (modal.open || !partida) {
     return;
@@ -428,13 +668,17 @@ function escolher(indiceDialogo, indiceOpcao) {
   }
 
   salvarProgresso(() => {
-    mostrarModal('Decisão tomada: "' + dialogos[indiceDialogo].opcoes[indiceOpcao] + '"', false, () => {
-      adicionarEscolha(resposta);
-      if (partida.etapa === "fala") {
-        adicionarFalaAtual();
-      }
-      mostrarCena();
-    });
+    mostrarModal(
+      'Decisão tomada: "' + dialogos[indiceDialogo].opcoes[indiceOpcao] + '"',
+      false,
+      () => {
+        adicionarEscolha(resposta);
+        if (partida.etapa === "fala") {
+          adicionarFalaAtual();
+        }
+        mostrarCena();
+      },
+    );
   });
 }
 
@@ -447,7 +691,9 @@ function calcularResultado(respostas) {
   }
 
   const maiorContagem = Math.max(0, ...Object.values(contagem));
-  return Object.keys(contagem).find((influencia) => contagem[influencia] === maiorContagem);
+  return Object.keys(contagem).find(
+    (influencia) => contagem[influencia] === maiorContagem,
+  );
 }
 
 function mostrarResultados() {
@@ -456,8 +702,10 @@ function mostrarResultados() {
   }
 
   const principal = calcularResultado(partida.escolhas);
-  document.getElementById("resumo-resultado").textContent = influencias[principal].titulo;
-  document.getElementById("influencias").textContent = influencias[principal].texto;
+  document.getElementById("resumo-resultado").textContent =
+    influencias[principal].titulo;
+  document.getElementById("influencias").textContent =
+    influencias[principal].texto;
   mostrarTela("resultados");
 }
 
@@ -474,7 +722,8 @@ function mostrarEstatisticas() {
   const realizadas = partida ? partida.escolhas : [];
   const total = document.createElement("strong");
   total.textContent = realizadas.length;
-  const descricao = realizadas.length === 1 ? "escolha realizada" : "escolhas realizadas";
+  const descricao =
+    realizadas.length === 1 ? "escolha realizada" : "escolhas realizadas";
   document.getElementById("quantidade").replaceChildren(total, " " + descricao);
   respostas.replaceChildren();
   respostas.hidden = realizadas.length === 0;
@@ -498,16 +747,21 @@ function novoJogo() {
   }
 
   if (partida) {
-    mostrarModal("Já existe uma partida. Deseja apagar esse progresso e começar um novo jogo?", true, (confirmou) => {
-      if (confirmou) {
-        iniciarPartida();
-      }
-    });
+    mostrarModal(
+      "Já existe uma partida. Deseja apagar esse progresso e começar um novo jogo?",
+      true,
+      (confirmou) => {
+        if (confirmou) {
+          iniciarPartida();
+        }
+      },
+    );
     return;
   }
   iniciarPartida();
 }
 
+// guarda o diálogo, a fala e o trecho atual
 function iniciarPartida() {
   partida = {
     versao: 1,
@@ -515,7 +769,7 @@ function iniciarPartida() {
     fala: 0,
     trecho: 0,
     etapa: "cena",
-    escolhas: []
+    escolhas: [],
   };
   conversa.replaceChildren();
   salvarProgresso(() => {
@@ -581,10 +835,16 @@ continuar.addEventListener("click", continuarJogo);
 comecar.addEventListener("click", comecarDialogo);
 avancar.addEventListener("click", avancarFala);
 document.getElementById("sair").addEventListener("click", sairDoJogo);
-document.getElementById("estatisticas-menu").addEventListener("click", mostrarEstatisticas);
-document.getElementById("ver-resultados").addEventListener("click", abrirResultados);
+document
+  .getElementById("estatisticas-menu")
+  .addEventListener("click", mostrarEstatisticas);
+document
+  .getElementById("ver-resultados")
+  .addEventListener("click", abrirResultados);
 estatisticasFim.addEventListener("click", mostrarEstatisticas);
-document.getElementById("voltar").addEventListener("click", () => mostrarTela("menu"));
+document
+  .getElementById("voltar")
+  .addEventListener("click", () => mostrarTela("menu"));
 window.addEventListener("resize", ajustarConversa);
 document.fonts.addEventListener("loadingdone", ajustarConversa);
 

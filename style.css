@@ -1,3 +1,4 @@
+/*fontes*/
 @font-face {
   font-family: "Nunito";
   src: url("assets/nunito-regular.ttf") format("truetype");
@@ -14,6 +15,7 @@
   font-display: swap;
 }
 
+/*cores*/
 :root {
   --fundo-externo: #e9e8e6;
   --fundo-menu: #d4cadc;
@@ -41,6 +43,7 @@ body {
   line-height: 1.6;
 }
 
+/*area central limitada em largura*/
 .jogo {
   width: 100%;
   max-width: 500px;
@@ -59,7 +62,9 @@ body {
 #fim,
 #resultados,
 #estatisticas {
-  background: var(--fundo-menu) url("assets/efd42ac4-1a3c-49f2-80fd-cf49579396a5.jpg") center / cover no-repeat;
+  background: var(--fundo-menu)
+    url("assets/efd42ac4-1a3c-49f2-80fd-cf49579396a5.jpg") center / cover
+    no-repeat;
 }
 
 #menu .subtitulo {
@@ -100,11 +105,14 @@ h1 img {
   min-height: 68px;
   padding: 16px 24px;
   border: 0;
-  background: transparent url("assets/botao-dourado.svg") center / 100% 100% no-repeat;
+  background: transparent url("assets/botao-dourado.svg") center / 100% 100%
+    no-repeat;
   color: var(--texto);
   font: inherit;
   cursor: pointer;
-  transition: transform 0.18s ease, filter 0.18s ease;
+  transition:
+    transform 0.18s ease,
+    filter 0.18s ease;
 }
 
 .botao-iniciar:hover:not(:disabled) {
@@ -122,6 +130,7 @@ h1 img {
   outline-offset: 3px;
 }
 
+/*1 terço para as falas e 2 terços para o resto */
 #cena {
   background-image: url("assets/quarto1.png");
   background-size: cover;
@@ -190,13 +199,15 @@ h1 img {
   gap: 12px;
 }
 
+/* balão de fala e narração */
 .mensagem {
   flex-shrink: 0;
   align-self: flex-start;
   max-width: 90%;
   padding: 12px 24px;
   border-radius: 12px;
-  background: transparent url("assets/falaprotagonista.png") 70% center / 133% auto no-repeat;
+  background: transparent url("assets/falaprotagonista.png") 70% center / 133%
+    auto no-repeat;
   text-align: left;
   overflow-wrap: anywhere;
 }
@@ -296,6 +307,7 @@ h1 img {
   display: none;
 }
 
+/* garante que o js consiga esconder com o hidden */
 [hidden] {
   display: none !important;
 }
@@ -306,6 +318,7 @@ h1 img {
   }
 }
 
+/*aviso de rotação pra tela paisagem */
 @media (orientation: landscape) and (pointer: coarse) {
   html,
   body {

@@ -39,7 +39,8 @@ const dialogos = [
       { personagem: "Protagonista (pensamento)", texto: "Eu tinha gostado.", lado: "esquerda" },
       { personagem: "", texto: "Ela olha novamente para o espelho, observando a estrela no chapéu.", lado: "centro" }
     ],
-    opcoes: ["Manter o chapéu como está", "Tirar o broche de estrela"]
+    opcoes: ["Manter o chapéu como está", "Tirar o broche de estrela"],
+    influencias: ["autonomia", "inseguranca"]
   },
   {
     titulo: "A foto perfeita",
@@ -57,7 +58,8 @@ const dialogos = [
       { personagem: "Protagonista (pensamento)", texto: "Será que essa ficou boa mesmo?", lado: "esquerda" },
       { personagem: "Protagonista (pensamento)", texto: "E essa legenda...", lado: "esquerda" }
     ],
-    opcoes: ["Postar sem mudar nada", "Editar foto e legenda", "Desistir de publicar"]
+    opcoes: ["Postar sem mudar nada", "Editar foto e legenda", "Desistir de publicar"],
+    influencias: ["autonomia", "inseguranca", "autocensura"]
   },
   {
     titulo: "Quanto custa sair de casa?",
@@ -79,9 +81,33 @@ const dialogos = [
       { personagem: "Protagonista", texto: "...se bem que às vezes vem.", lado: "esquerda" },
       { personagem: "Protagonista", texto: "Bom, o mercado nem é tão longe.", lado: "esquerda" }
     ],
-    opcoes: ["Ir a pé — saldo: 10 moedas", "Chamar táxi — saldo: 0 moedas"]
+    opcoes: ["Ir a pé — saldo: 10 moedas", "Chamar táxi — saldo: 0 moedas"],
+    influencias: ["dinheiro", "seguranca"]
   }
 ];
+
+const influencias = {
+  inseguranca: {
+    titulo: "Insegurança com a imagem",
+    texto: "A preocupação com a própria imagem e com o olhar dos outros foi a influência predominante neste trecho da história."
+  },
+  autocensura: {
+    titulo: "Autocensura",
+    texto: "O receio de se expor e de ser julgada teve mais peso na forma como a personagem se expressou."
+  },
+  autonomia: {
+    titulo: "Autonomia",
+    texto: "A confiança nas próprias preferências foi a influência predominante no caminho da personagem."
+  },
+  dinheiro: {
+    titulo: "Custo do deslocamento",
+    texto: "A preocupação com os recursos disponíveis foi a influência predominante neste trecho da história."
+  },
+  seguranca: {
+    titulo: "Segurança e conforto",
+    texto: "A busca por proteção e tranquilidade foi a influência predominante no caminho da personagem."
+  }
+};
 
 const chaveProgresso = "passion-progresso";
 const limiteTrecho = 160;
@@ -176,7 +202,7 @@ function progressoValido(dados) {
   if (dados.etapa === "escolhas") {
     return dados.escolhas.length === dados.dialogo && dados.fala === ultimaFala;
   }
-  if (dados.etapa === "fim") {
+  if (dados.etapa === "fim" || dados.etapa === "resultados") {
     return dados.dialogo === dialogos.length - 1 && dados.fala === ultimaFala && dados.escolhas.length === dialogos.length;
   }
   return false;
@@ -238,12 +264,20 @@ function mostrarTela(id) {
 }
 
 function mostrarCena() {
+  if (partida.etapa === "resultados") {
+    mostrarResultados();
+    return;
+  }
+  if (partida.etapa === "fim") {
+    mostrarTela("fim");
+    return;
+  }
+
   const atual = dialogos[partida.dialogo];
   comecar.hidden = partida.etapa !== "cena";
   conversa.hidden = partida.etapa === "cena";
   avancar.hidden = partida.etapa !== "fala";
   escolhas.hidden = partida.etapa !== "escolhas";
-  estatisticasFim.hidden = partida.etapa !== "fim";
   escolhas.replaceChildren();
 
   if (partida.etapa === "escolhas") {
@@ -404,6 +438,37 @@ function escolher(indiceDialogo, indiceOpcao) {
   });
 }
 
+function calcularResultado(respostas) {
+  const contagem = {};
+
+  for (const resposta of respostas) {
+    const influencia = dialogos[resposta.dialogo].influencias[resposta.opcao];
+    contagem[influencia] = (contagem[influencia] || 0) + 1;
+  }
+
+  const maiorContagem = Math.max(0, ...Object.values(contagem));
+  return Object.keys(contagem).find((influencia) => contagem[influencia] === maiorContagem);
+}
+
+function mostrarResultados() {
+  if (!partida || partida.etapa !== "resultados") {
+    return;
+  }
+
+  const principal = calcularResultado(partida.escolhas);
+  document.getElementById("resumo-resultado").textContent = influencias[principal].titulo;
+  document.getElementById("influencias").textContent = influencias[principal].texto;
+  mostrarTela("resultados");
+}
+
+function abrirResultados() {
+  if (modal.open || !partida || partida.etapa !== "fim") {
+    return;
+  }
+  partida.etapa = "resultados";
+  salvarProgresso(mostrarResultados);
+}
+
 function mostrarEstatisticas() {
   const respostas = document.getElementById("respostas");
   const realizadas = partida ? partida.escolhas : [];
@@ -517,6 +582,7 @@ comecar.addEventListener("click", comecarDialogo);
 avancar.addEventListener("click", avancarFala);
 document.getElementById("sair").addEventListener("click", sairDoJogo);
 document.getElementById("estatisticas-menu").addEventListener("click", mostrarEstatisticas);
+document.getElementById("ver-resultados").addEventListener("click", abrirResultados);
 estatisticasFim.addEventListener("click", mostrarEstatisticas);
 document.getElementById("voltar").addEventListener("click", () => mostrarTela("menu"));
 window.addEventListener("resize", ajustarConversa);

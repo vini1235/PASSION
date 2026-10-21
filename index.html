@@ -40,15 +40,31 @@
           Avançar
         </button>
         <div id="escolhas" hidden></div>
-        <button
-          class="botao-iniciar"
-          id="estatisticas-fim"
-          type="button"
-          hidden
-        >
-          Ver estatísticas
-        </button>
       </section>
+    </main>
+
+    <main class="jogo" id="fim" hidden>
+      <header>
+        <p class="subtitulo">Passion</p>
+        <h2>Obrigado por jogar a demo!</h2>
+      </header>
+      <p>Este foi um primeiro olhar para a história de Passion. Obrigado por fazer parte desse começo.</p>
+      <button class="botao-iniciar" id="ver-resultados" type="button">
+        Ver resultados
+      </button>
+    </main>
+
+    <main class="jogo" id="resultados" hidden>
+      <header>
+        <p class="subtitulo">Resultados da demo</p>
+        <h2>O que mais pesou nas escolhas?</h2>
+      </header>
+      <p id="resumo-resultado"></p>
+      <p id="influencias"></p>
+      <p class="footer">Uma leitura das escolhas da personagem neste trecho da história.</p>
+      <button class="botao-iniciar" id="estatisticas-fim" type="button">
+        Ver estatísticas
+      </button>
     </main>
 
     <main class="jogo" id="estatisticas" hidden>

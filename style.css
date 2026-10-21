@@ -16,12 +16,15 @@
 
 :root {
   --fundo-externo: #e9e8e6;
+  --fundo-menu: #d4cadc;
   --fundo-claro: #faf9f6;
   --texto: #343230;
   --texto-secundario: #706a67;
   --cinza-roxo: #655563;
   --cinza-roxo-escuro: #51434f;
   --lilas-bem-clarinho: #e8e0e8;
+  --roxo-escuro: #35105d;
+  --dourado: #ffdb78;
   --sobreposicao: #0006;
 }
 
@@ -34,6 +37,7 @@ body {
   background: var(--fundo-externo);
   color: var(--texto);
   font-family: "Nunito", Arial, sans-serif;
+  font-weight: 700;
   line-height: 1.6;
 }
 
@@ -51,6 +55,20 @@ body {
   text-align: center;
 }
 
+#menu {
+  background: var(--fundo-menu);
+}
+
+#menu .subtitulo {
+  color: var(--roxo-escuro);
+  font-weight: 700;
+}
+
+#menu .botao-iniciar {
+  color: var(--roxo-escuro);
+  font-weight: 700;
+}
+
 h1,
 h2,
 p {
@@ -58,8 +76,10 @@ p {
 }
 
 h1 {
-  color: var(--cinza-roxo);
-  font-size: 48px;
+  color: var(--dourado);
+  font-size: 64px;
+  text-shadow: -2px -2px var(--roxo-escuro), 2px -2px var(--roxo-escuro),
+    -2px 2px var(--roxo-escuro), 2px 2px var(--roxo-escuro);
 }
 
 .subtitulo,
@@ -69,17 +89,26 @@ h1 {
 }
 
 .botao-iniciar {
+  width: min(100%, 240px);
+  align-self: center;
+  min-height: 68px;
   padding: 16px 24px;
   border: 0;
-  border-radius: 6px;
-  background: transparent url("assets/botao.png") 60% center / 153% auto no-repeat;
+  background: transparent url("assets/botao-novo.svg") center / 100% 100% no-repeat;
   color: var(--texto);
   font: inherit;
   cursor: pointer;
+  transition: transform 0.18s ease, filter 0.18s ease;
 }
 
-.botao-iniciar:hover {
-  filter: brightness(0.94);
+.botao-iniciar:hover:not(:disabled) {
+  transform: translateY(-2px);
+  filter: brightness(1.06) drop-shadow(0 3px 3px var(--sobreposicao));
+}
+
+.botao-iniciar:active:not(:disabled) {
+  transform: translateY(0);
+  filter: brightness(0.98);
 }
 
 .botao-iniciar:focus-visible {
@@ -131,9 +160,12 @@ h1 {
 }
 
 #sair {
+  width: auto;
+  min-height: 0;
   flex-shrink: 0;
   align-self: flex-end;
   padding: 8px 12px;
+  border-radius: 6px;
   background: var(--fundo-claro);
   color: var(--cinza-roxo);
   font-size: 14px;
@@ -161,6 +193,10 @@ h1 {
   background: transparent url("assets/falaprotagonista.png") 70% center / 133% auto no-repeat;
   text-align: left;
   overflow-wrap: anywhere;
+}
+
+.mensagem:not(.narracao) {
+  font-weight: 400;
 }
 
 .mensagem.direita {
@@ -196,7 +232,12 @@ h1 {
   margin-top: 24px;
 }
 
-#estatisticas {
+#modal .botao-iniciar {
+  width: auto;
+}
+
+#estatisticas,
+#resultados {
   justify-content: flex-start;
   text-align: left;
 }
@@ -226,7 +267,8 @@ h1 {
   border-bottom: 1px solid var(--lilas-bem-clarinho);
 }
 
-#respostas p {
+#respostas p,
+#influencias {
   margin-top: 4px;
   color: var(--texto-secundario);
 }
@@ -242,5 +284,15 @@ h1 {
 @media (max-width: 480px) {
   .jogo {
     max-width: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .botao-iniciar {
+    transition: none;
+  }
+
+  .botao-iniciar:hover:not(:disabled) {
+    transform: none;
   }
 }

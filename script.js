@@ -479,6 +479,27 @@ function mostrarModal(mensagem, confirmar = false, aoFechar = null) {
   modal.showModal();
 }
 
+// salva o progresso no localStorage, se possível. Se não for possível, mostra um aviso.
+function salvarProgresso(aoTerminar = null) {
+  try {
+    localStorage.setItem(chaveProgresso, JSON.stringify(partida));
+    temProgressoSalvo = true;
+  } catch {
+    if (!avisoSalvamento) {
+      avisoSalvamento = true;
+      mostrarModal(
+        "Não foi possível salvar neste navegador. O progresso pode ser perdido ao sair ou recarregar a página.",
+        false,
+        aoTerminar,
+      );
+      return;
+    }
+  }
+  if (aoTerminar) {
+    aoTerminar();
+  }
+}
+
 function mostrarTela(id) {
   for (const tela of document.querySelectorAll("main")) {
     tela.hidden = tela.id !== id;
@@ -524,7 +545,6 @@ function atualizarCenario() {
   const dialogo = dialogos[partida.dialogo];
   let cenario = dialogo.cenario;
 
-  // mantém o último cenário indicado nas falas até encontrar uma nova mudança
   for (let i = partida.fala; i >= 0; i--) {
     if (dialogo.falas[i].cenario) {
       cenario = dialogo.falas[i].cenario;
@@ -553,7 +573,7 @@ function ajustarConversa() {
     return;
   }
 
-  // as mensagens mais antigas saem da tela
+  // falas antigas somem pra abrir espaço para as novas
   while (
     conversa.children.length > 1 &&
     conversa.scrollHeight > conversa.clientHeight
@@ -603,7 +623,6 @@ function adicionarEscolha(resposta) {
   });
 }
 
-// usado ao continuar uma partida
 function reconstruirConversa() {
   conversa.replaceChildren();
   if (partida.etapa === "cena") {
@@ -690,6 +709,7 @@ function calcularResultado(respostas) {
     contagem[influencia] = (contagem[influencia] || 0) + 1;
   }
 
+  //se acontecer empate, o resultado será o primeiro que atingir a maior contagem
   const maiorContagem = Math.max(0, ...Object.values(contagem));
   return Object.keys(contagem).find(
     (influencia) => contagem[influencia] === maiorContagem,

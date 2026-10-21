@@ -79,9 +79,13 @@ p {
 }
 
 h1 {
-  font-family: "Ink Free", "Nunito", Arial, sans-serif;
-  color: var(--dourado);
   font-size: 64px;
+}
+
+h1 img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
 }
 
 .subtitulo,

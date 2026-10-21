@@ -428,7 +428,7 @@ function escolher(indiceDialogo, indiceOpcao) {
   }
 
   salvarProgresso(() => {
-    mostrarModal("Escolha registrada: " + dialogos[indiceDialogo].opcoes[indiceOpcao], false, () => {
+    mostrarModal('Decisão tomada: "' + dialogos[indiceDialogo].opcoes[indiceOpcao] + '"', false, () => {
       adicionarEscolha(resposta);
       if (partida.etapa === "fala") {
         adicionarFalaAtual();

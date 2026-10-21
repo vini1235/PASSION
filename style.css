@@ -55,8 +55,11 @@ body {
   text-align: center;
 }
 
-#menu {
-  background: var(--fundo-menu);
+#menu,
+#fim,
+#resultados,
+#estatisticas {
+  background: var(--fundo-menu) url("assets/efd42ac4-1a3c-49f2-80fd-cf49579396a5.jpg") center / cover no-repeat;
 }
 
 #menu .subtitulo {
@@ -76,10 +79,9 @@ p {
 }
 
 h1 {
+  font-family: "Ink Free", "Nunito", Arial, sans-serif;
   color: var(--dourado);
   font-size: 64px;
-  text-shadow: -2px -2px var(--roxo-escuro), 2px -2px var(--roxo-escuro),
-    -2px 2px var(--roxo-escuro), 2px 2px var(--roxo-escuro);
 }
 
 .subtitulo,
@@ -94,7 +96,7 @@ h1 {
   min-height: 68px;
   padding: 16px 24px;
   border: 0;
-  background: transparent url("assets/botao-novo.svg") center / 100% 100% no-repeat;
+  background: transparent url("assets/botao-dourado.svg") center / 100% 100% no-repeat;
   color: var(--texto);
   font: inherit;
   cursor: pointer;
@@ -240,6 +242,15 @@ h1 {
 #resultados {
   justify-content: flex-start;
   text-align: left;
+}
+
+.painel-texto {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px;
+  border-radius: 6px;
+  background: var(--fundo-claro);
 }
 
 #quantidade {
